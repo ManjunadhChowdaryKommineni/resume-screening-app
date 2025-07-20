@@ -6,8 +6,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 import PyPDF2
 import spacy
-import subprocess
-import importlib.util
+
 
 
 # --- PAGE CONFIG ---
@@ -51,10 +50,7 @@ def load_model():
 
 nlp = load_model()
 def load_model():
-    model_name = "en_core_web_sm"
-    if not importlib.util.find_spec(model_name):
-        subprocess.run(["python", "-m", "spacy", "download", model_name])
-    return spacy.load(model_name)
+    return spacy.load("en_core_web_sm")
 
 # --- TEXT PROCESSING FUNCTIONS ---
 def extract_text_from_pdf(file):
