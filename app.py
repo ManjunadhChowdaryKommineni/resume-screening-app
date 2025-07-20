@@ -5,6 +5,10 @@ import spacy
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 import PyPDF2
+import spacy
+import subprocess
+import importlib.util
+
 
 # --- PAGE CONFIG ---
 st.set_page_config(page_title="Resume Matcher", page_icon="📄", layout="centered")
@@ -46,6 +50,11 @@ def load_model():
         return spacy.load("en_core_web_sm")
 
 nlp = load_model()
+def load_model():
+    model_name = "en_core_web_sm"
+    if not importlib.util.find_spec(model_name):
+        subprocess.run(["python", "-m", "spacy", "download", model_name])
+    return spacy.load(model_name)
 
 # --- TEXT PROCESSING FUNCTIONS ---
 def extract_text_from_pdf(file):
