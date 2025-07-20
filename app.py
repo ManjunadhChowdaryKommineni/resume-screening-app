@@ -1,12 +1,10 @@
-##writefile app.py
 import streamlit as st
 import pandas as pd
 import spacy
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 import PyPDF2
-import subprocess
-import importlib.util
+
 # --- PAGE CONFIG ---
 st.set_page_config(page_title="Resume Matcher", page_icon="📄", layout="centered")
 
@@ -35,13 +33,7 @@ st.markdown("""
 st.markdown("<h1 style='text-align: center; color: #4CAF50;'>📄 AI-Powered Resume Screening</h1>", unsafe_allow_html=True)
 st.markdown("<p style='text-align: center; font-size:18px;'>Smart filtering of resumes using Natural Language Processing and Machine Learning</p>", unsafe_allow_html=True)
 st.markdown("---")
-def ensure_spacy_model():
-    model_name = "en_core_web_sm"
-    if not importlib.util.find_spec(model_name):
-        subprocess.run(["python", "-m", "spacy", "download", model_name])
-    return spacy.load(model_name)
 
-nlp = ensure_spacy_model()
 # --- LOAD SPACY MODEL ---
 @st.cache_resource
 def load_model():
@@ -123,7 +115,7 @@ if submitted:
                     <span style='color: #555;'>Match Score:</span>
                     <div style="background-color: #ddd; border-radius: 10px; height: 22px;">
                         <div style="
-                            width: {percentage}%;
+                            width: {percentage}% ;
                             background-color: {bar_color};
                             height: 100%;
                             border-radius: 10px;
@@ -144,3 +136,4 @@ if submitted:
 
     else:
         st.warning("⚠️ Please upload at least one resume and enter a job description.")
+
