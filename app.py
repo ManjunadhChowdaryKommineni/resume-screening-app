@@ -1,9 +1,9 @@
 import streamlit as st
 import pandas as pd
+import PyPDF2
 import spacy
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
-import PyPDF2
 
 # --- PAGE CONFIG ---
 st.set_page_config(page_title="Resume Matcher", page_icon="📄", layout="centered")
@@ -95,7 +95,6 @@ if submitted:
                 rank = index + 1
                 resume_name = f"Rank {rank} – {row['Resume']}"
 
-                # Color coding
                 if percentage >= 80:
                     bar_color = "#4CAF50"   # Green
                 elif percentage >= 50:
@@ -130,7 +129,6 @@ if submitted:
                 </div>
                 """, unsafe_allow_html=True)
 
-            # CSV Download
             csv = df.to_csv(index=False).encode()
             st.download_button("📥 Download Results as CSV", csv, "ranked_resumes.csv", "text/csv")
 
