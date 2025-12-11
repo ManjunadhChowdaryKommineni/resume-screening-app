@@ -25,6 +25,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Expose default Streamlit port
 EXPOSE 8501
 
-# Default command
-CMD ["streamlit", "run", "resumescreeningapp.py", "--server.port", "8501", "--server.headless", "true"]
+# at the end of Dockerfile, replace any existing CMD with this:
+CMD ["bash", "-lc", "streamlit run resumescreeningapp.py --server.port ${PORT:-8501} --server.address 0.0.0.0 --server.headless true --server.enableCORS false --server.enableXsrfProtection false"]
+
 
