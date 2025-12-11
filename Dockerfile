@@ -1,29 +1,30 @@
-# Use a stable Python base
+# Dockerfile — Python 3.11 base for compatibility with spaCy/blis
 FROM python:3.11-slim
 
-# Prevent interactive prompts
 ENV DEBIAN_FRONTEND=noninteractive
-
 WORKDIR /app
+
+# Copy project files
 COPY . /app
 
-# Install system build dependencies required to compile C extensions
-RUN apt-get update && apt-get install -y --no-install-recommends \
+# Install system packages required to build some Python wheels
+RUN apt-get update \
+ && apt-get install -y --no-install-recommends \
     build-essential \
     gcc \
     g++ \
     libffi-dev \
     curl \
     ca-certificates \
-    && rm -rf /var/lib/apt/lists/*
+ && rm -rf /var/lib/apt/lists/*
 
 # Upgrade pip and install python deps
 RUN python -m pip install --upgrade pip setuptools wheel
-RUN pip install -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
-# (optional) ensure spaCy model if wheel not installed
-RUN python -c "import importlib,sys; \
-    (importlib.import_module('spacy') and print('spacy ready')) if 'spacy' in globals() else None" || true
-
+# Expose default Streamlit port
 EXPOSE 8501
+
+# Default command
 CMD ["streamlit", "run", "resumescreeningapp.py", "--server.port", "8501", "--server.headless", "true"]
+
