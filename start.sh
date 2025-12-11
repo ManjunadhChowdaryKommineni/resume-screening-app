@@ -21,5 +21,5 @@ except ImportError:
         print("Error downloading model:", e, file=sys.stderr)
 PY
 
-# Start Streamlit
-streamlit run resumescreeningapp.py --server.port ${PORT:-8501} --server.headless true
+streamlit run resumescreeningapp.py --server.port ${PORT:-8501} --server.address 0.0.0.0 --server.headless true --server.enableCORS false --server.enableXsrfProtection false
+
