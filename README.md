@@ -1,42 +1,54 @@
-
----
-
-# 📌 2. `resume-screening-app`
-
-```md
 # 📄 AI Resume Screening App
 
-An intelligent resume screening system that uses **Machine Learning/NLP** to filter and rank resumes based on job descriptions.
+An intelligent Resume Screening System that uses **Machine Learning and Natural Language Processing (NLP)** to analyze, filter, and rank resumes based on job descriptions. This project helps automate the recruitment process by identifying the most relevant candidates efficiently.
 
 ---
 
 ## 🚀 Features
 
-- 📊 Resume parsing and analysis
-- 🧠 NLP-based keyword matching
-- 📈 Candidate ranking system
-- ⚡ Fast and automated screening
-- 🎯 Improves hiring efficiency
+- 📄 Resume parsing and text extraction  
+- 🧠 NLP-based analysis using TF-IDF / similarity techniques  
+- 📊 Candidate ranking based on job description match  
+- ⚡ Fast and automated screening process  
+- 🎯 Improves hiring efficiency and reduces manual effort  
 
 ---
 
 ## 🧠 Tech Stack
 
-- Python
-- Scikit-learn
-- NLP (TF-IDF / embeddings)
-- Flask / Streamlit (if UI exists)
-- Pandas, NumPy
+- **Programming Language:** Python  
+- **Libraries:** Scikit-learn, Pandas, NumPy  
+- **NLP Techniques:** TF-IDF, Cosine Similarity  
+- **Framework (if used):** Flask / Streamlit  
+- **Others:** Regex, Text Preprocessing  
 
 ---
 
 ## ⚙️ How It Works
 
-1. Upload resumes
-2. Extract text data
-3. Compare with job description
-4. Rank candidates based on similarity score
+1. Upload resumes (PDF/Text format)  
+2. Extract text content from resumes  
+3. Preprocess text (cleaning, tokenization)  
+4. Convert text into numerical features using TF-IDF  
+5. Compare resumes with job description  
+6. Rank candidates based on similarity score  
 
 ---
 
 ## 📂 Project Structure
+resume-screening-app/
+│── data/ # Sample resumes / dataset
+│── model/ # ML model files (if saved)
+│── app.py # Main application file
+│── preprocessing.py # Text cleaning and preprocessing
+│── requirements.txt # Dependencies
+│── README.md
+
+---
+
+## ▶️ Installation
+
+```bash
+git clone https://github.com/ManjunadhChowdaryKommineni/resume-screening-app
+cd resume-screening-app
+pip install -r requirements.txt
