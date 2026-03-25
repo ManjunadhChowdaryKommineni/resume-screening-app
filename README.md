@@ -33,18 +33,17 @@ An intelligent Resume Screening System that uses **Machine Learning and Natural 
 5. Compare resumes with job description  
 6. Rank candidates based on similarity score  
 
----
-
 ## 📂 Project Structure
-resume-screening-app/
-│── data/ # Sample resumes / dataset
-│── model/ # ML model files (if saved)
-│── app.py # Main application file
-│── preprocessing.py # Text cleaning and preprocessing
-│── requirements.txt # Dependencies
-│── README.md
 
----
+```
+resume-screening-app/
+├── data/
+├── model/
+├── app.py
+├── preprocessing.py
+├── requirements.txt
+└── README.md
+```
 
 ## ▶️ Installation
 
